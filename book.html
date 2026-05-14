@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Book Your Detail | Naul Auto Detailing — San Antonio</title>
+<meta name="description" content="Request a mobile auto detailing appointment with Naul Auto Detailing in San Antonio. We come to you. Quick request form — we respond fast."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="/book.html"/>
+<link rel="icon" type="image/png" href="img/logo-icon.png"/>
+<link rel="apple-touch-icon" href="img/logo-icon.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<style>
+/* Booking form specific styles */
+.book-hero {
+  background: linear-gradient(135deg, var(--black) 0%, #0a1929 50%, var(--blue-deep) 100%);
+  color: white;
+  padding: 70px 22px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.book-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 30% 40%, rgba(43,169,255,0.18) 0%, transparent 50%);
+  pointer-events: none;
+}
+.book-hero-inner { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
+.book-hero h1 { color: white; margin-bottom: 14px; }
+.book-hero h1 em {
+  background: linear-gradient(135deg, var(--blue-bright) 0%, var(--blue-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.book-hero p {
+  color: rgba(255,255,255,0.85);
+  font-size: 16px;
+  font-weight: 500;
+}
+.book-hero .phone-alt {
+  margin-top: 18px;
+  font-size: 14px;
+}
+.book-hero .phone-alt a {
+  color: var(--blue-bright);
+  font-weight: 700;
+}
+
+.form-wrap {
+  max-width: 680px;
+  margin: -40px auto 0;
+  padding: 0 22px 80px;
+  position: relative;
+  z-index: 5;
+}
+
+.form-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.form-section {
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--border);
+}
+.form-section:last-of-type { border-bottom: none; }
+@media (max-width: 600px) { .form-section { padding: 24px 20px; } }
+
+.form-section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--black);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.form-section-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: white;
+  font-size: 13px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.form-section-sub {
+  font-size: 13px;
+  color: var(--gray);
+  margin-bottom: 20px;
+  margin-left: 36px;
+}
+
+.field-group { margin-bottom: 16px; }
+.field-group:last-child { margin-bottom: 0; }
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 600px) { .field-row { grid-template-columns: 1fr; } }
+
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--charcoal);
+  margin-bottom: 6px;
+}
+label .req { color: var(--danger); }
+
+input[type=text],
+input[type=tel],
+input[type=email],
+input[type=date],
+select,
+textarea {
+  width: 100%;
+  padding: 13px 15px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--charcoal);
+  background: var(--cream);
+  transition: all 0.15s;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(26,142,232,0.1);
+}
+textarea { resize: vertical; min-height: 90px; }
+
+/* Service tier radio cards */
+.tier-options { display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 500px) { .tier-options { grid-template-columns: repeat(3, 1fr); } }
+.tier-option {
+  position: relative;
+  cursor: pointer;
+}
+.tier-option input {
+  position: absolute;
+  opacity: 0;
+}
+.tier-option .tier-box {
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 14px;
+  text-align: center;
+  transition: all 0.15s;
+  background: var(--cream);
+  height: 100%;
+}
+.tier-option:hover .tier-box { border-color: var(--blue-light); }
+.tier-option input:checked + .tier-box {
+  border-color: var(--blue);
+  background: var(--blue-pale);
+  box-shadow: 0 0 0 3px rgba(26,142,232,0.1);
+}
+.tier-option .tier-icon { font-size: 24px; margin-bottom: 6px; }
+.tier-option .tier-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--black);
+  text-transform: uppercase;
+}
+.tier-option .tier-price {
+  font-size: 12px;
+  color: var(--blue);
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+/* Add-on checkboxes */
+.addon-checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+@media (max-width: 500px) { .addon-checks { grid-template-columns: 1fr; } }
+.addon-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  background: var(--cream);
+  transition: all 0.15s;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+.addon-check:hover { border-color: var(--blue-light); }
+.addon-check input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--blue);
+  cursor: pointer;
+}
+.addon-check.checked {
+  border-color: var(--blue);
+  background: var(--blue-pale);
+}
+
+.form-submit-section {
+  padding: 28px 32px;
+  background: var(--cream);
+  text-align: center;
+}
+.form-submit-section .btn { width: 100%; max-width: 360px; }
+.form-disclaimer {
+  font-size: 12px;
+  color: var(--gray);
+  margin-top: 14px;
+  line-height: 1.5;
+}
+
+/* Success state */
+.success-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  padding: 50px 40px;
+  text-align: center;
+  display: none;
+}
+.success-card.show { display: block; }
+.form-card.hide { display: none; }
+.success-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--success) 0%, #3a9e3e 100%);
+  color: white;
+  font-size: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 22px;
+  box-shadow: 0 8px 24px rgba(76,175,80,0.35);
+}
+.success-card h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 28px;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-bottom: 12px;
+}
+.success-card p {
+  color: var(--gray);
+  font-size: 15px;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+.success-card .btn-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.error-msg {
+  background: #FEE;
+  border: 1px solid #FCC;
+  color: var(--danger);
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 32px 0;
+  display: none;
+}
+.error-msg.show { display: block; }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <a href="index.html" class="nav-brand">
+    <img src="img/logo.png" alt="Naul Auto Detailing"/>
+    <div class="nav-brand-text">Naul<span>Auto Detailing</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#services" class="nav-link hide-sm">Services</a>
+    <a href="index.html#work" class="nav-link hide-sm">Our Work</a>
+    <a href="index.html#about" class="nav-link hide-sm">About</a>
+    <a href="index.html#contact" class="nav-link">Contact</a>
+    <a href="book.html" class="nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<!-- BOOKING HERO -->
+<section class="book-hero">
+  <div class="book-hero-inner">
+    <div class="tag-label" style="color:var(--blue-bright);">Request an Appointment</div>
+    <h1 class="h1">Book Your <em>Detail</em></h1>
+    <p>Fill out the quick form below and we'll get back to you fast to confirm your appointment. We come to you — anywhere in San Antonio.</p>
+    <div class="phone-alt">
+      Prefer to talk? <a href="tel:+1NAULPHONE">📞 Call or Text Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<div class="form-wrap">
+
+  <!-- The form -->
+  <form class="form-card" id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+    <!-- Section 1: Vehicle -->
+    <div class="form-section">
+      <div class="form-section-title"><span class="form-section-num">1</span> Your Vehicle</div>
+      <div class="form-section-sub">Tell us what we're working with.</div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label for="vehicle_type">Vehicle Type <span class="req">*</span></label>
+          <select id="vehicle_type" name="Vehicle Type" required>
+            <option value="">Select...</option>
+            <option value="Sedan">Sedan / Coupe</option>
+            <option value="SUV/Truck">SUV / Truck</option>
+            <option value="Minivan/Large SUV">Minivan / Large SUV</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="vehicle_info">Make &amp; Model</label>
+          <input type="text" id="vehicle_info" name="Vehicle Make and Model" placeholder="e.g. 2019 Honda Accord"/>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="vehicle_condition">Current Condition</label>
+        <select id="vehicle_condition" name="Vehicle Condition">
+          <option value="Normal">Normal — regular use, light dirt</option>
+          <option value="Heavy">Heavy — very dirty, needs deep work</option>
+          <option value="Pet hair">Pet hair present</option>
+          <option value="Stains">Has stains / spills</option>
+          <option value="Like new">Pretty clean — just want a refresh</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Section 2: Service -->
+    <div class="form-section">
+      <div class="form-section-title"><span class="form-section-num">2</span> Choose Your Service</div>
+      <div class="form-section-sub">Pick the package that fits. Prices start from these — final quote depends on vehicle size and condition.</div>
+
+      <div class="tier-options">
+        <label class="tier-option">
+          <input type="radio" name="Service Package" value="Interior Detail" required/>
+          <div class="tier-box">
+            <div class="tier-icon">🧼</div>
+            <div class="tier-name">Interior</div>
+            <div class="tier-price">From $105</div>
+          </div>
+        </label>
+        <label class="tier-option">
+          <input type="radio" name="Service Package" value="Full Package"/>
+          <div class="tier-box">
+            <div class="tier-icon">✦</div>
+            <div class="tier-name">Full Package</div>
+            <div class="tier-price">From $190</div>
+          </div>
+        </label>
+        <label class="tier-option">
+          <input type="radio" name="Service Package" value="Exterior Detail"/>
+          <div class="tier-box">
+            <div class="tier-icon">💎</div>
+            <div class="tier-name">Exterior</div>
+            <div class="tier-price">From $105</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Section 3: Add-ons -->
+    <div class="form-section">
+      <div class="form-section-title"><span class="form-section-num">3</span> Add-Ons</div>
+      <div class="form-section-sub">Optional — check anything extra you need.</div>
+
+      <div class="addon-checks">
+        <label class="addon-check"><input type="checkbox" name="Add-Ons" value="Stain Removal"/> Stain Removal</label>
+        <label class="addon-check"><input type="checkbox" name="Add-Ons" value="Pet Hair Removal"/> Pet Hair Removal</label>
+        <label class="addon-check"><input type="checkbox" name="Add-Ons" value="Headlight Restoration"/> Headlight Restoration</label>
+        <label class="addon-check"><input type="checkbox" name="Add-Ons" value="Engine Bay Detail"/> Engine Bay Detail</label>
+        <label class="addon-check"><input type="checkbox" name="Add-Ons" value="Paint Correction"/> Paint Correction</label>
+        <label class="addon-check"><input type="checkbox" name="Add-Ons" value="Ceramic Coating"/> Ceramic Coating</label>
+      </div>
+    </div>
+
+    <!-- Section 4: When & Where -->
+    <div class="form-section">
+      <div class="form-section-title"><span class="form-section-num">4</span> When &amp; Where</div>
+      <div class="form-section-sub">We're mobile — tell us where to meet you.</div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label for="preferred_date">Preferred Date <span class="req">*</span></label>
+          <input type="date" id="preferred_date" name="Preferred Date" required/>
+        </div>
+        <div class="field-group">
+          <label for="preferred_time">Preferred Time</label>
+          <select id="preferred_time" name="Preferred Time">
+            <option value="Morning">Morning (8am–12pm)</option>
+            <option value="Afternoon">Afternoon (12pm–4pm)</option>
+            <option value="Evening">Evening (4pm–7pm)</option>
+            <option value="Flexible">I'm flexible</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="service_address">Service Address <span class="req">*</span></label>
+        <input type="text" id="service_address" name="Service Address" placeholder="Where should we meet you? (home, work, etc.)" required/>
+      </div>
+    </div>
+
+    <!-- Section 5: Contact -->
+    <div class="form-section">
+      <div class="form-section-title"><span class="form-section-num">5</span> Your Contact Info</div>
+      <div class="form-section-sub">So we can confirm your appointment.</div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label for="customer_name">Full Name <span class="req">*</span></label>
+          <input type="text" id="customer_name" name="Name" placeholder="Your name" required/>
+        </div>
+        <div class="field-group">
+          <label for="customer_phone">Phone <span class="req">*</span></label>
+          <input type="tel" id="customer_phone" name="Phone" placeholder="(210) 555-0123" required/>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="customer_email">Email <span class="req">*</span></label>
+        <input type="email" id="customer_email" name="Email" placeholder="you@email.com" required/>
+      </div>
+
+      <div class="field-group">
+        <label for="notes">Anything Else?</label>
+        <textarea id="notes" name="Notes" placeholder="Special requests, problem areas, questions — anything we should know."></textarea>
+      </div>
+    </div>
+
+    <!-- Hidden field: subject line for the email Naul receives -->
+    <input type="hidden" name="_subject" value="New Booking Request — Naul Auto Detailing"/>
+
+    <!-- Error message -->
+    <div class="error-msg" id="errorMsg">Something went wrong. Please call or text us instead at (210) 555-0123.</div>
+
+    <!-- Submit -->
+    <div class="form-submit-section">
+      <button type="submit" class="btn btn-glow btn-lg" id="submitBtn">Send My Request →</button>
+      <div class="form-disclaimer">
+        This sends your request straight to Naul Auto Detailing. We'll reach out to confirm — usually within a few hours during business hours.
+      </div>
+    </div>
+  </form>
+
+  <!-- Success message (hidden until form submits) -->
+  <div class="success-card" id="successCard">
+    <div class="success-icon">✓</div>
+    <h2>Request Sent!</h2>
+    <p>Thanks for choosing Naul Auto Detailing. We've got your request and we'll reach out soon to confirm your appointment. Keep an eye on your phone!</p>
+    <div class="btn-row">
+      <a href="index.html" class="btn btn-s">Back to Home</a>
+      <a href="tel:+1NAULPHONE" class="btn btn-p">📞 Call Us</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <img src="img/logo.png" alt="" class="footer-logo"/>
+  <div class="footer-name">Naul Auto Detailing</div>
+  <div class="footer-tag">— Mobile · San Antonio · Pro —</div>
+
+  <div class="socials">
+    <a href="https://www.instagram.com/naul_autodetailing/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/p/Naul-Auto-Detailing-61578023325082/" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <a href="https://maps.app.goo.gl/phPYXoFEWZ8urYo56" target="_blank" rel="noopener" class="social-btn" aria-label="Google Maps">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C7.802 0 4.4 3.403 4.4 7.602C4.4 13.4 12 24 12 24S19.6 13.4 19.6 7.602C19.6 3.403 16.198 0 12 0M12 11A3 3 0 0 1 9 8A3 3 0 0 1 12 5A3 3 0 0 1 15 8A3 3 0 0 1 12 11Z"/></svg>
+    </a>
+  </div>
+
+  <div class="footer-links">
+    <a href="index.html#services">Services</a>
+    <a href="index.html#work">Our Work</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="book.html">Book Now</a>
+  </div>
+
+  <div class="footer-contact">
+    San Antonio, TX · Mobile Service<br/>
+    <a href="tel:+1NAULPHONE">Call or Text to Book</a>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <div class="footer-credit">
+    © 2026 Naul Auto Detailing. All rights reserved.<br/>
+    Designed by <a href="https://tophatmedia.net" target="_blank" rel="noopener">Top Hat Media</a> — San Antonio's creative studio
+  </div>
+</footer>
+
+<script>
+// Highlight add-on checkboxes when checked
+document.querySelectorAll('.addon-check input').forEach(function(cb) {
+  cb.addEventListener('change', function() {
+    this.closest('.addon-check').classList.toggle('checked', this.checked);
+  });
+});
+
+// Set minimum date to today
+document.getElementById('preferred_date').min = new Date().toISOString().split('T')[0];
+
+// Handle form submission via Formspree (AJAX so we can show success without leaving the page)
+var form = document.getElementById('bookingForm');
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  var btn = document.getElementById('submitBtn');
+  var errorMsg = document.getElementById('errorMsg');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  errorMsg.classList.remove('show');
+
+  var data = new FormData(form);
+
+  fetch(form.action, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  }).then(function(response) {
+    if (response.ok) {
+      document.getElementById('bookingForm').classList.add('hide');
+      document.getElementById('successCard').classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      throw new Error('Submission failed');
+    }
+  }).catch(function() {
+    errorMsg.classList.add('show');
+    btn.textContent = 'Send My Request →';
+    btn.disabled = false;
+  });
+});
+</script>
+
+</body>
+</html>
